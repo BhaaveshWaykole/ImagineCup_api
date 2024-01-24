@@ -1,6 +1,6 @@
 # Silver Stride AI | AI-Driven Financial Freedom
 
-![Silver Stride AI Logo](https://github.com/starrylight90/Imagine_AI/blob/master/LOGO-NO%20BG.png)
+<img src="https://github.com/starrylight90/Imagine_AI/blob/master/LOGO-NO%20BG.png" alt="Silver Stride AI Logo" width="40%">
 
 Welcome to Silver Stride AI, your gateway to personalized financial management and generational wealth planning.
 
