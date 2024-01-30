@@ -1,9 +1,9 @@
-import { Sidebar } from './Sidebar.jsx'
+import { Dashboard } from './Dashboard.jsx'
 
 export function Home() {
     return (
         <div>
-            <Sidebar/>
+            <Dashboard />
         </div>
     )
 }

@@ -15,7 +15,7 @@ import {
 
 export function Sidebar() {
     return (
-        <Card className="w-1/6 shadow-xl shadow-blue-gray-900/5 h-screen rounded-xl flex flex-col">
+        <Card className="w-1/6 shadow-2xl shadow-blue-gray-900/5 h-screen rounded-xl flex flex-col">
             <Typography className="py-5 px-2">
                 <div>
                     <span className="font-bold">Sidebar</span>
