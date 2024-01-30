@@ -1,8 +1,9 @@
 // import './App.css';
+import {Home} from './components/Home.jsx'
 function App() {
   return (
     <div>
-      <h1 className="bg-orange-100">HELLO</h1>
+      <Home />
     </div>
   );
 }
