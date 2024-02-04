@@ -16,26 +16,33 @@ import {
 export function Sidebar() {
     return (
         <Card className="w-1/6 shadow-2xl shadow-blue-gray-900/5 h-screen rounded-xl flex flex-col">
-            <Typography className="py-5 px-2">
+            <div className="profileRtCover border-2 border-black rounded-2xl  flex justify-center h-28 mt-5 "> 
+                <img src="jpeg" alt="LOGO" className= "h-28"/>
+            </div>
+            <Typography className="py-5 px-2 text-center">
                 <div>
                     <span className="font-bold">Sidebar</span>
                 </div>
             </Typography>
+            <div className="profileRtCover flex justify-center h-28 mb-5"> 
+            {/* do relative position later if needed */}
+                <img src="download.jpeg" alt="IMG" className="rounded-full h-28"/>
+            </div>
             <List>
-                <div className="px-2">
-                    <ListItem className = "gap-3 mb-2 items-center cursor-pointer">
+                <div className="px-2 flex content-center flex-col self-center">
+                    <ListItem className="gap-3 mb-2 items-center cursor-pointer">
                         <ListItemPrefix>
                             <ChartBarSquareIcon className="h-5 w-5" />
                         </ListItemPrefix>
                         DashBord
                     </ListItem>
-                    <ListItem className = "gap-3 mb-2 items-center cursor-pointer">
+                    <ListItem className="gap-3 mb-2 items-center cursor-pointer">
                         <ListItemPrefix>
                             <ArrowTrendingUpIcon className="h-5 w-5" />
                         </ListItemPrefix>
                         Learn
                     </ListItem>
-                    <ListItem className = "gap-3 mb-2 items-center cursor-pointer">
+                    <ListItem className="gap-3 mb-2 items-center cursor-pointer">
                         <ListItemPrefix>
                             <InboxStackIcon className="h-5 w-5" />
                         </ListItemPrefix>
