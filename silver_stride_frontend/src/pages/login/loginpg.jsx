@@ -5,8 +5,8 @@ import {
     Spinner
 } from "@material-tailwind/react";
 
-import { loginCall } from "../../apiCalls.js";
-import { AuthContext } from "../../contex/AuthContex.jsx"
+// import { loginCall } from "../../apiCalls.js";
+// import { AuthContext } from "../../contex/AuthContex.jsx"
 
 export default function Login() {
     // const emailRef = useRef();
@@ -37,7 +37,7 @@ export default function Login() {
                             Login
                         </Typography>
                     </div>
-                    <form className='Form mt-5' onSubmit={handleClick}>
+                    <form className='Form mt-5'>
                         <div className="InputUser mb-3">
                             <input
                                 label='Email'
@@ -45,7 +45,8 @@ export default function Login() {
                                 className='p-2 rounded-xl'
                                 type="email"
                                 placeholder='Username/email'
-                                ref={emailRef} />
+                                // ref={emailRef}
+                                 />
                         </div>
                         <div className="InputPass mb-3">
                             <input
@@ -54,20 +55,21 @@ export default function Login() {
                                 className='p-2 rounded-xl'
                                 type='password'
                                 placeholder='Password'
-                                ref={passwordRef} />
+                                // ref={passwordRef} 
+                                />
                         </div>
                         <div className='SubmitBtn flex flex-col items-center'>
-                            <button className="subBtn bg-black-bg text-white-e px-4 py-1 rounded-xl" disabled={isFetching}>
+                            {/* <button className="subBtn bg-black-bg text-white-e px-4 py-1 rounded-xl" disabled={isFetching}>
                                 {isFetching ?
                                     <Spinner />
                                     : "Submit"}
-                            </button>
+                            </button> */}
                             <span className='frgt-pass mt-2 cursor-pointer text-neutral-900'>Forgot Password ?</span>
-                            <button className="subBtn bg-green-500 text-white-e px-4 py-1 rounded-xl" disabled={isFetching}>
+                            {/* <button className="subBtn bg-green-500 text-white-e px-4 py-1 rounded-xl" disabled={isFetching}>
                                 {isFetching ?
                                     <Spinner />
                                     : "Create new account"}
-                            </button>
+                            </button> */}
                         </div>
                     </form>
                 </div>

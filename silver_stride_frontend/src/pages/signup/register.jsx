@@ -1,7 +1,6 @@
-import React from 'react';
-import { useRef, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
-import axios from "axios";
+// import { useRef, useContext } from 'react';
+// import { useNavigate } from 'react-router-dom';
+// import axios from "axios";
 
 import {
     Typography,
@@ -56,7 +55,7 @@ export default function Register() {
                         </Typography>
                     </div>
 
-                    <form onSubmit={handleClick}>
+                    <form >
                         <div className='Form mt-5'>
                             <div className="InputUser mb-3" >
                                 <input
@@ -65,7 +64,8 @@ export default function Register() {
                                     placeholder='Username'
                                     required
                                     type='text'
-                                    ref={userNameRef} />
+                                    // ref={userNameRef}
+                                />
                             </div>
                             <div className="InputEmail mb-3" >
                                 <input
@@ -74,7 +74,8 @@ export default function Register() {
                                     placeholder='Email'
                                     required
                                     type='email'
-                                    ref={emailRef} />
+                                    // ref={emailRef} 
+                                    />
                             </div>
                             <div className="InputPass mb-3" >
                                 <input
@@ -83,14 +84,16 @@ export default function Register() {
                                     placeholder='Password'
                                     required
                                     type='password'
-                                    ref={passwordRef} />
+                                    // ref={passwordRef} 
+                                    />
                             </div>
                             <div className="InputPassAgn mb-3" >
                                 <input label='Password Again'
                                     className='p-2 rounded-xl w-full'
                                     placeholder='Enter Password Again'
                                     required type='password'
-                                    ref={passwordAgainRef} />
+                                    // ref={passwordAgainRef}
+                                    />
                             </div>
                         </div>
                         <div className='SubmitBtn flex flex-col items-center'>
