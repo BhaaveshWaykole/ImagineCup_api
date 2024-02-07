@@ -3,7 +3,7 @@
 // Password Hashing done by bcrypt :- 
 import bcrypt from 'bcrypt'
 
-import User from '../models/User.js'
+import User from '../schema/UserGenInfo.js'
 
 export const registerUser = async (req, res) => {
     // const newUser = await new User({

@@ -19,21 +19,33 @@ const userGenSchema = new mongoose.Schema({
         require: true,
         min: 8
     },
-    profilePic: {
+    age: {
+        type: Number,
+        default: "",
+    },
+    relationship: {
+        type: Number, 
+        enum : [1, 2, 3],
+    },
+    occupation : {
         type: String,
         default: "",
     },
-    mainCoverPic: {
+    income : {
         type: String,
-        default: "",
+        default : ""
     },
-    city: {
-        type: String,
-        max: 50,
+    expense : {
+        type: Number,
+        default : ""
     },
+    // assetType :{
+    //     type : Boolean,
+    //     default: false
+    // }
 },
     { timeseries: true }
 );
 
-const user = mongoose.model("User", userGenSchema)
+const user = mongoose.model("UserGen", userGenSchema)
 export default user;
