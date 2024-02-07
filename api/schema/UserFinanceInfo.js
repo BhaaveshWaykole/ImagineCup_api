@@ -16,10 +16,6 @@ const userFinanceSchema = new mongoose.Schema({
     cash : {
         type : Number,
         default : ""
-    },
-    monthlyExp : {
-        type : Number,
-        default : ""
     }
 },
     { timeseries: true }
