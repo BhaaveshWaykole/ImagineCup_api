@@ -1,7 +1,26 @@
 import mongoose from "mongoose";
 
 const userFinanceSchema = new mongoose.Schema({
-    
+    totalNet : {
+        type : Number,
+        default : ""
+    },
+    stocks : {
+        type : Number,
+        default : ""
+    },
+    realEstate : {
+        type : Number,
+        default : ""
+    },
+    cash : {
+        type : Number,
+        default : ""
+    },
+    monthlyExp : {
+        type : Number,
+        default : ""
+    }
 },
     { timeseries: true }
 );

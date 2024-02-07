@@ -35,7 +35,7 @@ const userGenSchema = new mongoose.Schema({
         type: String,
         default : ""
     },
-    expense : {
+    monthExp : {
         type: Number,
         default : ""
     },
