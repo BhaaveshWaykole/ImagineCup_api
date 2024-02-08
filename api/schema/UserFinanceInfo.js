@@ -1,21 +1,25 @@
 import mongoose from "mongoose";
 
 const userFinSchema = new mongoose.Schema({
-    totalNet : {
-        type : Number,
-        default : ""
+    userId: {
+        type: String,
+        default: ""
     },
-    stocks : {
-        type : Number,
-        default : ""
+    totalNet: {
+        type: Number,
+        default: ""
     },
-    realEstate : {
-        type : Number,
-        default : ""
+    stocks: {
+        type: Number,
+        default: ""
     },
-    cash : {
-        type : Number,
-        default : ""
+    realEstate: {
+        type: Number,
+        default: ""
+    },
+    cash: {
+        type: Number,
+        default: ""
     }
 },
     { timeseries: true }

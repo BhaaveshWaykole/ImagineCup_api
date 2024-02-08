@@ -1,11 +1,12 @@
 import express from 'express';
 
 import {
-    updateUserFin,
-    deleteUserFin,
-    getUserFin,
     regUserFin
-} from '../controllers/userGenController.js'
+} from '../controllers/userFinController.js'
 
 const router = express.Router();
 
+// register the finance info os user :- 
+router.post("/regUserFin/:id", regUserFin)
+
+export default router;

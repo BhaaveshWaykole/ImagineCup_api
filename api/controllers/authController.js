@@ -19,7 +19,10 @@ export const registerUser = async (req, res) => {
         const newUser = new UserGen({
             username: req.body.username,
             email: req.body.email,
-            password: hashedPassword
+            password: hashedPassword,
+            occupation : req.body.occupation,
+            income: req.body.income,
+	        monthExp: req.body.monthExp,
         });
         // Save User
         const user = await newUser.save();
