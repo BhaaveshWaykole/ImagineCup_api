@@ -1,4 +1,5 @@
 import UserFin from "../schema/UserFinanceInfo.js"
+import UserGen from '../schema/UserGenInfo.js'
 
 export const regUserFin = async (req, res) => {
     try {
@@ -39,7 +40,9 @@ export const updateUserFin = async (req, res) => {
 export const deleteUserFin = async (req, res) => {
     if (req.params.id === req.body.userId) {
         try {
-            await UserFin.findByIdAndDelete(req.params.id)
+            const parameterId = req.params.id
+            const ID = await UserFin.findOne({ userId : parameterId})
+            await UserFin.findByIdAndDelete(ID)
             res.status(200).json("Account has been deleted");
         } catch (err) {
             return res.status(500).json(err);
@@ -50,9 +53,12 @@ export const deleteUserFin = async (req, res) => {
 }
 
 export const getUserFin = async (req, res) => {
-    const userid = req.params.id
     try {
-        const getUSer = await UserFin.findById(userid)
+        const parameterId = req.params.id
+        const ID = await UserFin.findOne({ userId : parameterId})
+        const getUSer = await UserFin.findById(ID)
+        const userMain = await UserGen.findById(parameterId)
+        console.log(JSON.stringify(userMain.username))
         res.status(200).json(getUSer)
     } catch (err) {
         console.log("NO")
