@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const userFinanceSchema = new mongoose.Schema({
+const userFinSchema = new mongoose.Schema({
     totalNet : {
         type : Number,
         default : ""
@@ -21,5 +21,5 @@ const userFinanceSchema = new mongoose.Schema({
     { timeseries: true }
 );
 
-const user = mongoose.model("UserFin", userFinanceSchema)
+const user = mongoose.model("UserFin", userFinSchema)
 export default user;

@@ -3,7 +3,7 @@
 // Password Hashing done by bcrypt :- 
 import bcrypt from 'bcrypt'
 
-import User from '../schema/UserGenInfo.js'
+import UserGen from '../schema/UserGenInfo.js'
 
 export const registerUser = async (req, res) => {
     // const newUser = await new User({
@@ -16,7 +16,7 @@ export const registerUser = async (req, res) => {
         const hashedPassword = await bcrypt.hash(req.body.password, salt)
 
         // create a new user
-        const newUser = new User({
+        const newUser = new UserGen({
             username: req.body.username,
             email: req.body.email,
             password: hashedPassword
@@ -31,7 +31,7 @@ export const registerUser = async (req, res) => {
 
 export const loginUser = async(req, res) => {
     try{
-        const loginVar = await User.findOne({email: req.body.email})
+        const loginVar = await UserGen.findOne({email: req.body.email})
         // !loginVar && res.status(404).send("user not found")
         if(!loginVar){
             res.status(404).json("user not found")
