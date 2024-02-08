@@ -19,6 +19,10 @@ const userGenSchema = new mongoose.Schema({
         require: true,
         min: 8
     },
+    gender :{
+        type: String,
+        default: "",
+    },
     age: {
         type: Number,
         default: "",

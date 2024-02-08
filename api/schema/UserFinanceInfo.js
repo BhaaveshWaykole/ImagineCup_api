@@ -20,6 +20,10 @@ const userFinSchema = new mongoose.Schema({
     cash: {
         type: Number,
         default: ""
+    },
+    finGoals: {
+        type: Number,
+        default: ""
     }
 },
     { timeseries: true }

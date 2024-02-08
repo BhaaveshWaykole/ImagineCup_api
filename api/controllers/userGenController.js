@@ -2,14 +2,14 @@ import UserGen from '../schema/UserGenInfo.js'
 
 export const updateUser = async (req, res) => {
     if (req.body.userId === req.params.id) {
-        if (req.body.password) {
-            try {
-                const salt = await bcrypt.genSalt(10)
-                req.body.password = await bcrypt.hash(req.body.password, salt)
-            } catch (err) {
-                return res.status(500).json(err)
-            }
-        }
+        // if (req.body.password) {
+        //     try {
+        //         const salt = await bcrypt.genSalt(10)
+        //         req.body.password = await bcrypt.hash(req.body.password, salt)
+        //     } catch (err) {
+        //         return res.status(500).json(err)
+        //     }
+        // }
         try {
             const updateUser = await UserGen.findByIdAndUpdate(
                 req.params.id,
@@ -28,7 +28,7 @@ export const updateUser = async (req, res) => {
 export const deleteUser = async (req, res) => {
     if (req.params.id === req.body.userId) {
         try {
-            await UserFin.findByIdAndDelete(req.params.id)
+            await UserGen.findByIdAndDelete(req.params.id)
             res.status(200).json("Account has been deleted");
         } catch (err) {
             return res.status(500).json(err);
@@ -41,7 +41,6 @@ export const deleteUser = async (req, res) => {
 export const getUser = async (req, res) => {
     // const userid = req.query.userId
     // const userName = req.query.username
-    console.log("i am here")
     const userid = req.params.id
     try {
         // const getUser = userid ? await UserFin.findById(userid) : await UserFin.findOne({ username: userName })

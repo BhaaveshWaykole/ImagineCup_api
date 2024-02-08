@@ -21,6 +21,7 @@ export const registerUser = async (req, res) => {
             email: req.body.email,
             password: hashedPassword,
             occupation : req.body.occupation,
+            gender : req.body.gender,
             income: req.body.income,
 	        monthExp: req.body.monthExp,
         });
