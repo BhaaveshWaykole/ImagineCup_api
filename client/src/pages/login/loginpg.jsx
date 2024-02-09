@@ -4,7 +4,9 @@ import {
     Typography,
     Spinner
 } from "@material-tailwind/react";
+import logoImage from './LOGO-NO BG.png';
 
+//Register Page of App :- 
 // import { loginCall } from "../../apiCalls.js";
 // import { AuthContext } from "../../contex/AuthContex.jsx"
 
@@ -24,56 +26,55 @@ export default function Login() {
     //     console.log(emailRef.current.value);
     // }
     return (
-        <div>
-            <div className='Login h-screen flex items-center justify-center bg-purple-100'>
-                <div>
-                    <Typography className='text-5xl text-black mr-10 font-poppins-800'>
-                        Silver Stride
-                    </Typography>
-                </div>
-                <div className='flex flex-col border-2 border-black py-20 px-32 bg-purple-50 rounded-xl'>
-                    <div className='LoginHead'>
-                        <Typography className='text-6xl text-center text-black font-poppins-800'>
-                            Login
-                        </Typography>
-                    </div>
-                    <form className='Form mt-5'>
-                        <div className="InputUser mb-3">
-                            <input
-                                label='Email'
-                                required
-                                className='p-2 rounded-xl'
-                                type="email"
-                                placeholder='Username/email'
-                                // ref={emailRef}
-                                 />
-                        </div>
-                        <div className="InputPass mb-3">
-                            <input
-                                label='Password'
-                                required
-                                className='p-2 rounded-xl'
-                                type='password'
-                                placeholder='Password'
-                                // ref={passwordRef} 
-                                />
-                        </div>
-                        <div className='SubmitBtn flex flex-col items-center'>
-                            {/* <button className="subBtn bg-black-bg text-white-e px-4 py-1 rounded-xl" disabled={isFetching}>
-                                {isFetching ?
-                                    <Spinner />
-                                    : "Submit"}
-                            </button> */}
-                            <span className='frgt-pass mt-2 cursor-pointer text-neutral-900'>Forgot Password ?</span>
-                            {/* <button className="subBtn bg-green-500 text-white-e px-4 py-1 rounded-xl" disabled={isFetching}>
-                                {isFetching ?
-                                    <Spinner />
-                                    : "Create new account"}
-                            </button> */}
-                        </div>
-                    </form>
-                </div>
+        <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-slate-700 to-zinc-900">
+         <div className='flex items-center text-center'>
+            <img
+                className='mb-0 transform -rotate-90 mr-4' // Adjust rotation and margin based on your preference
+                src={logoImage}
+                alt='Logo'
+                style={{ width: '100px', height: 'auto' }}
+            />
+            <Typography className='text-5xl text-white font-times-new-roman mr-4'>
+                Silver Stride AI
+            </Typography>
             </div>
+          <div className='flex flex-col border-1 border-gray py-20 px-32 bg-gradient-to-r from-slate-400 to-slate-400 rounded-xl shadow-lg'>
+            <div className='text-center'>
+              <Typography className='text-6xl text-white font-times-new-roman'>
+                Login
+              </Typography>
+            </div>
+    
+            <form className='mt-5'>
+              <div className='mt-3'>
+                <input
+                  className='p-3 rounded-xl w-full border focus:outline-none focus:border-purple-500'
+                  placeholder='Username'
+                  required
+                  type='text'
+                />
+              </div>
+             
+              <div className='mt-3'>
+                <input
+                  className='p-3 rounded-xl w-full border focus:outline-none focus:border-purple-500'
+                  placeholder='Password'
+                  required
+                  type='password'
+                />
+              </div>
+              
+    
+              <div className='flex flex-col items-center mt-5'>
+                <button className='bg-black text-white px-6 py-3 rounded-xl hover:bg-black-600 focus:outline-none'>
+                 Login
+                </button>
+                <span className='mt-2 cursor-pointer text-gray-800'>
+                    Don't have an account? Sign Up Now
+                </span>
+              </div>
+            </form>
+          </div>
         </div>
-    )
-}
+      );
+    };

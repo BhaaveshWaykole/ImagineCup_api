@@ -1,0 +1,10 @@
+    /* SignUp.css */
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+    .font-roboto {
+      font-family: 'Roboto', sans-serif;
+    }
+    /* SignUp.css */
+    .font-times-new-roman {
+        font-family: 'Times New Roman', serif;
+      }
