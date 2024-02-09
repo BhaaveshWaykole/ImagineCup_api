@@ -1,11 +1,6 @@
 import {
     Card,
-    Typography,
-    List,
-    ListItem,
-    ListItemPrefix,
-    ListItemSuffix,
-    Chip,
+    Typography
 } from "@material-tailwind/react";
 
 export function Dashboard() {
