@@ -3,6 +3,7 @@ import { Home } from './components/Home.jsx'
 import { Sidebar } from './components/Sidebar.jsx'
 import Login from "./pages/login/loginpg.jsx"
 import Register from "./pages/signup/register.jsx"
+import Profile from "./components/Profile.jsx";
 function App() {
   return (
     <div>
@@ -12,7 +13,7 @@ function App() {
           <Home/>
         </div>
       </div> */}
-      <Register />
+      <Profile />
     </div>
   );
 }
