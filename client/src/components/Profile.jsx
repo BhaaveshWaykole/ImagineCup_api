@@ -78,9 +78,19 @@ export default function Profile() {
                 className='rounded-lg  border-2 border-fuchsia-900 px-1 ml-1'
               />
             </Typography>
+            <Typography className="m-2">
+              Age :
+              <input
+                label="Age"
+                type="text"
+                name="Age"
+                placeholder="Age"
+                className='rounded-lg  border-2 border-fuchsia-900 px-1 ml-1'
+              />
+            </Typography>
           </div>
           <button type="submit" className="flex justify-center">
-            <div className="bg-orange-900 w-fit border-2 border-fuchsia-900 rounded-lg px-2 mb-3">
+            <div className="bg-orange-900 text-white w-fit border-2 border-fuchsia-900 rounded-lg px-2 mb-3">
               <Typography>Submit</Typography>
             </div>
           </button>
