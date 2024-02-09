@@ -10,13 +10,13 @@ import { Dashboard } from './components/Dashboard.jsx';
 function App() {
   return (
     <div>
-       {/* <div className="flex">
-        <Sidebar/>
+      <div className="flex">
+        <Sidebar />
         <div className="w-full ">
-        <Dashboard />
+          <Assets />
         </div>
-      </div>  */}
-     <Register/>
+      </div>
+      {/* <Register/> */}
     </div>
   );
 }

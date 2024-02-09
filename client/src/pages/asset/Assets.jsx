@@ -63,8 +63,9 @@ const Assets = () => {
           <input type="text" id="avgMonthlyExpenditure" name="avgMonthlyExpenditure" value={inputs.avgMonthlyExpenditure} onChange={handleInputChange} className="mt-1 p-2 w-full border rounded-md" />
         </div>
         
-        <div className="col-span-full mt-4">
-          <button type="submit" className="bg-black text-white px-4 py-2 rounded-md hover:bg-blue-600">Submit</button>
+        <div className="col-span-full mt-4 flex gap-7">
+          <button type="submit" className="bg-black text-white px-4 py-2 rounded-md hover:bg-blue-600">Model 1</button>
+          <button type="submit" className="bg-black text-white px-4 py-2 rounded-md hover:bg-blue-600">Model 2</button>
         </div>
       </form>
     </div>

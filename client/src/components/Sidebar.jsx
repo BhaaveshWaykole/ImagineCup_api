@@ -16,7 +16,7 @@ import logoImage from './LOGO-NO BG.png';
 
 export function Sidebar() {
     return (
-        <Card className="w-1/6 shadow-2xl shadow-blue-gray-900/5 h-screen flex flex-col" style={{ backgroundImage: 'linear-gradient(to right, #6B7280, #6B7280)' }}>
+        <Card className="w-1/6 rounded-none shadow-2xl shadow-blue-gray-900/5 h-screen flex flex-col" style={{ backgroundImage: 'linear-gradient(to right, #6B7280, #6B7280)' }}>
           <div className="flex items-center">
             <img
                 className='mb-0 transform -rotate-90 ml-6' // Adjust rotation and margin based on your preference
