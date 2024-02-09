@@ -57,8 +57,8 @@ export const getUserFin = async (req, res) => {
         const parameterId = req.params.id
         const ID = await UserFin.findOne({ userId : parameterId})
         const getUSer = await UserFin.findById(ID)
-        const userMain = await UserGen.findById(parameterId)
-        console.log(JSON.stringify(userMain.username))
+        const userMain = await UserGen.findById(parameterId).username
+        console.log(JSON.stringify(userMain))
         res.status(200).json(getUSer)
     } catch (err) {
         console.log("NO")
