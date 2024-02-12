@@ -14,23 +14,14 @@ function App() {
     <BrowserRouter>
       <Routes>
         {/* <Route exact path="/" element={<Register />} /> */}
-        <Route path="/login" element={<Login />} />
+        <Route exact path="/" element={<Login />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/" element={<Home />} />
         <Route path="/userfin" element={<UserFin />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/assets" element={<Assets />} />
       </Routes>
     </BrowserRouter>
-    // <div>
-    //   <div className="flex">
-    //     <Sidebar />
-    //     <div className="w-full ">
-    //       <Dashboard />
-    //     </div>
-    //   </div>
-    //   {/* <Register/> */}
-    // </div>
   );
 }
 

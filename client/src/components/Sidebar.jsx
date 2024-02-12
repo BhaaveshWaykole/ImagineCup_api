@@ -27,7 +27,7 @@ export function Sidebar() {
           alt='Logo'
           style={{ width: '30px', height: 'auto' }} /> {/* Adjust the logo image source and height */}
         <Typography className="py-5 px-2 text-center">
-          <Link to="/">
+          <Link to="/home">
             <div>
               <span className="font-bold text-white">Silver Stride AI</span>
             </div>

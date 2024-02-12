@@ -1,7 +1,10 @@
 // src/components/Assets.jsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Sidebar } from '../../components/Sidebar.jsx';
+import axios from 'axios'
+
 const Assets = () => {
+
   const [inputs, setInputs] = useState({
     age: '',
     maritalStatus: '',
@@ -12,24 +15,36 @@ const Assets = () => {
     gender: '', // Added gender to stat
   });
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setInputs((prevInputs) => ({ ...prevInputs, [name]: value }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Add your logic to handle form submission here
-    console.log('Form submitted:', inputs);
-  };
-
   const handleModel1 = () => {
     // console.log("clicked")
+    // console.log(inputs)
     const a = document.getElementById("Model1")
     a.innerHTML = "Low spending rate"
     a.style.color = "white"
     a.style.backgroundColor = "green"
   }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Add your logic to handle form submission here
+    // console.log('Form submitted:', inputs);
+  };
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const res = await axios.post(`https://z4v1g3l3-1000.inc1.devtunnels.ms/SpendingScore/${inputs}`);
+      console.log(res)
+      // setUser(res.data);
+    };
+    fetchUser();
+  }, [inputs.avgMonthlyExpenditure]);
+  
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setInputs((prevInputs) => ({ ...prevInputs, [name]: value }));
+  };
+
+
   const handleModel2 = () => {
     // console.log("clicked")
     const a = document.getElementById("Model2")
@@ -57,8 +72,8 @@ const Assets = () => {
               className="mt-1 p-2 w-full border rounded-md"
             >
               <option value="">Select Gender</option>
-              <option value="male">Male</option>
-              <option value="female">Female</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
             </select>
           </div>
           <div className="mb-4">
