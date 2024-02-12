@@ -35,9 +35,9 @@ const Assets = () => {
         .catch((error) => {
           console.error('Error generating quote:', error);
         });
-    const pred=document.getElementById("spendingscore")
-    console.log(prediction)
-    pred.innerHTML="Your Spending Score is "+ prediction;
+    // const pred=document.getElementById("spendingscore")
+    // console.log(prediction)
+    // pred.innerHTML="Your Spending Score is "+ prediction;
   };
 
   // const handleModel1 = () => {
@@ -99,17 +99,15 @@ const Assets = () => {
 
           <div className="col-span-full mt-4 flex gap-7">
             <button type="submit" onClick={generatePred} className="bg-black text-white px-4 py-2 rounded-md hover:bg-blue-600">Spending Score</button>
-            {/* {prediction && (
-              <div className='rounded-xl p-3 mt-5'>
-                <h1>Generated Prediction</h1>
-                <p>{prediction}</p>
-              </div>
-            )} */}
             {/* <button type="submit" onClick={handleModel2} className="bg-black text-white px-4 py-2 rounded-md hover:bg-blue-600">Personalized Silver Advice</button> */}
           </div>
-          <div id="spendingscore" className='rounded-xl p-3 mt-5'>
-            
-          </div>
+
+          {prediction && (
+                <div className='rounded-xl p-3 mt-5'>
+                  <h1>Generated Prediction {prediction}</h1>
+                </div>
+              )}
+
         </div>
       </div>
     </div>
