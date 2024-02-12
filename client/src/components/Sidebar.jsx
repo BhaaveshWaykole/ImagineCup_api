@@ -27,9 +27,11 @@ export function Sidebar() {
           alt='Logo'
           style={{ width: '30px', height: 'auto' }} /> {/* Adjust the logo image source and height */}
         <Typography className="py-5 px-2 text-center">
-          <div>
-            <span className="font-bold text-white">Silver Stride AI</span>
-          </div>
+          <Link to="/">
+            <div>
+              <span className="font-bold text-white">Silver Stride AI</span>
+            </div>
+          </Link>
         </Typography>
       </div>
       <div className="profileRtCover flex justify-center h-15 mb-2 mt-5">
