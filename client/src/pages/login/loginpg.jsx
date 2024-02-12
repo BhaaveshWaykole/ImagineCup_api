@@ -5,15 +5,22 @@ import {
   Spinner
 } from "@material-tailwind/react";
 import logoImage from './LOGO-NO BG.png';
-// import { Home } from '../../components/Home.jsx'
+
 import {
   Link,
 } from "react-router-dom";
+
+import { useNavigate } from "react-router-dom";
 //Register Page of App :- 
 // import { loginCall } from "../../apiCalls.js";
 // import { AuthContext } from "../../contex/AuthContex.jsx"
 
 export default function Login() {
+  const navigate = useNavigate();
+
+  const navToHome = () => {
+    navigate('/home')
+  }
   // const emailRef = useRef();
   // const passwordRef = useRef();
   // const { user, isFetching, error, dispatch } = useContext(AuthContext)
@@ -69,7 +76,7 @@ export default function Login() {
 
 
           <div className='flex flex-col items-center mt-5'>
-            <button className='bg-black text-white px-6 py-3 rounded-xl hover:bg-black-600 focus:outline-none'>
+            <button onClick={navToHome} className='bg-black text-white px-6 py-3 rounded-xl hover:bg-black-600 focus:outline-none'>
               Login
             </button>
             <span className='mt-2 cursor-pointer text-gray-800'>
