@@ -11,23 +11,23 @@ CORS(app)
 # Load your machine learning models here
 
 # Spending score prediction model
-spending_score_model = joblib.load('Models/SpendingScore_model.pkl') 
+spending_score_model = joblib.load('SpendingScore_model.pkl') 
 
 # Target Advice prediction model
-file = open('Models/TargetAdvice_model.json', 'r')
+file = open('TargetAdvice_model.json', 'r')
 loaded  = file.read()
 file.close()
 
 target_advice_model = model_from_json(loaded)
-target_advice_model.load_weights("Models/TargetAdvice_model.h5")
+target_advice_model.load_weights("TargetAdvice_model.h5")
 
 # Asset type prediction model
-file = open('Models/AssetType_model.json', 'r')
+file = open('AssetType_model.json', 'r')
 loaded  = file.read()
 file.close()
 
 asset_type_model = model_from_json(loaded)
-asset_type_model.load_weights("Models/AssetType_model.h5")
+asset_type_model.load_weights("AssetType_model.h5")
 
 
 @app.route('/')

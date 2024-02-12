@@ -55,7 +55,7 @@ const Assets = () => {
     a.style.backgroundColor = "blue"
   }
   return (
-    <div className="flex min-h-screen flex items-center justify-center bg-gradient-to-r from-slate-700 to-zinc-900">
+    <div className="flex min-h-screen items-center justify-center bg-gradient-to-r from-slate-700 to-zinc-900">
       <Sidebar />
       <div className="flex flex-col max-w-4xl mx-auto p-6 bg-gradient-to-r from-slate-400 to-slate-400 rounded-lg shadow-md" >
         <h1 className="text-2xl font-bold mb-6">User Details</h1>
@@ -74,6 +74,8 @@ const Assets = () => {
               className="mt-1 p-2 w-full border rounded-md"
             >
               <option value="">Select Gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
               <option value="Mle">Male</option>
               <option value="Female">Female</option>
             </select>
