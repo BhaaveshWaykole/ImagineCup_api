@@ -26,20 +26,21 @@ const Assets = () => {
   const handleModel1 = () => {
     // console.log("clicked")
     const a = document.getElementById("Model1")
-    a.innerHTML = "Model1 - low"
+    a.innerHTML = "Low spending rate"
     a.style.color = "white"
-    a.style.backgroundColor = "red"
+    a.style.backgroundColor = "green"
   }
   const handleModel2 = () => {
     // console.log("clicked")
     const a = document.getElementById("Model2")
-    a.innerHTML = "Model2 - FD"
+    a.innerHTML = "SilverAI suggests you should go FD"
     a.style.color = "white"
     a.style.backgroundColor = "blue"
   }
   return (
-    <div className="flex flex-col min-h-screen flex items-center justify-center bg-gradient-to-r from-slate-700 to-zinc-900">
-      <div className="max-w-4xl mx-auto p-6 bg-gradient-to-r from-slate-400 to-slate-400 rounded-lg shadow-md" >
+    <div className="flex min-h-screen flex items-center justify-center bg-gradient-to-r from-slate-700 to-zinc-900">
+      <Sidebar />
+      <div className="flex flex-col max-w-4xl mx-auto p-6 bg-gradient-to-r from-slate-400 to-slate-400 rounded-lg shadow-md" >
         <h1 className="text-2xl font-bold mb-6">User Details</h1>
         <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <div className="mb-4">
@@ -78,16 +79,16 @@ const Assets = () => {
           </div>
 
           <div className="col-span-full mt-4 flex gap-7">
-            <button type="submit" onClick={handleModel1} className="bg-black text-white px-4 py-2 rounded-md hover:bg-blue-600">Model 1</button>
-            <button type="submit" onClick={handleModel2} className="bg-black text-white px-4 py-2 rounded-md hover:bg-blue-600">Model 2</button>
+            <button type="submit" onClick={handleModel1} className="bg-black text-white px-4 py-2 rounded-md hover:bg-blue-600">Spending Score</button>
+            <button type="submit" onClick={handleModel2} className="bg-black text-white px-4 py-2 rounded-md hover:bg-blue-600">Personalized Silver Advice</button>
           </div>
         </form>
-      </div>
-      <div id="Model1">
+        <div id="Model1" className='rounded-xl p-3 mt-5'>
 
-      </div>
-      <div id="Model2">
+        </div>
+        <div id="Model2" className='rounded-xl p-3 mt-5'>
 
+        </div>
       </div>
     </div>
   );
