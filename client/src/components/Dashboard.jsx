@@ -6,7 +6,7 @@ import {
 import { PowerBIEmbed } from 'powerbi-client-react';
 import { models } from 'powerbi-client';
 import { Sidebar } from "./Sidebar";
-import './dashboard.css';
+import './Dashboard.css';
 
 export function Dashboard() {
 	return (
