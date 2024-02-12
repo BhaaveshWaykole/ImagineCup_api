@@ -76,12 +76,16 @@ export default function Login() {
 
 
           <div className='flex flex-col items-center mt-5'>
-            <button onClick={navToHome} className='bg-black text-white px-6 py-3 rounded-xl hover:bg-black-600 focus:outline-none'>
-              Login
-            </button>
-            <span className='mt-2 cursor-pointer text-gray-800'>
-              Don't have an account? Sign Up Now
-            </span>
+            <Link to="/home">
+              <button className='bg-black text-white px-6 py-3 rounded-xl hover:bg-black-600 focus:outline-none'>
+                Login
+              </button>
+            </Link>
+            <Link to="/register">
+              <span className='mt-2 cursor-pointer text-gray-800'>
+                Don't have an account? Sign Up Now
+              </span>
+            </Link>
           </div>
         </form>
       </div>
