@@ -5,7 +5,8 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   server: {
     proxy : {
-      '/flaskapi' : 'http://127.0.0.1:1000'
+      '/flaskapi' : 'http://127.0.0.1:1000',
+      '/api' : 'http://localhost:3000'
     }
   },
   plugins: [react()],

@@ -7,9 +7,10 @@ import Profile from "./components/Profile.jsx";
 import UserFin from "./pages/userfin/UserFin.jsx";
 import Assets from './pages/asset/Assets.jsx';
 import { Dashboard } from './components/Dashboard.jsx';
-
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+
 function App() {
+  
   return (
     <BrowserRouter>
       <Routes>

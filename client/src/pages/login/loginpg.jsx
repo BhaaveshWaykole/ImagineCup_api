@@ -1,5 +1,3 @@
-import { useContext, useRef } from "react";
-
 import {
   Typography,
   Spinner
@@ -10,31 +8,36 @@ import {
   Link,
 } from "react-router-dom";
 
+import axios from 'axios'
+import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
-//Register Page of App :- 
-// import { loginCall } from "../../apiCalls.js";
-// import { AuthContext } from "../../contex/AuthContex.jsx"
 
 export default function Login() {
-  const navigate = useNavigate();
-
-  const navToHome = () => {
-    navigate('/home')
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const navHome = useNavigate()
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    const email = emailRef.current.value;
+    const password = passwordRef.current.value;
+    try {
+      const res = await axios.post("/api/auth/login", { email, password })
+      console.log(JSON.stringify(res.data));
+      if (res.status) {
+        const goHome = () => {
+          navHome('/home')
+        }
+        goHome()
+      }else {
+        const error = document.getElementById("error")
+        error.innerHTML = "Login failed"
+        error.style.color = "white"
+      }
+      // console.log(res.status)
+    } catch (err) {
+      console.log(err)
+    }
   }
-  // const emailRef = useRef();
-  // const passwordRef = useRef();
-  // const { user, isFetching, error, dispatch } = useContext(AuthContext)
-
-  // const handleClick = (e) => {
-  //     // e.preventDefault(); // Prevents the default form submission behavior
-  //     // console.log('hi');
-  //     e.preventDefault();
-  //     loginCall(
-  //         { email: emailRef.current.value, password: passwordRef.current.value },
-  //         dispatch
-  //     );
-  //     console.log(emailRef.current.value);
-  // }
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-slate-700 to-zinc-900">
       <div className='flex items-center text-center'>
@@ -55,13 +58,14 @@ export default function Login() {
           </Typography>
         </div>
 
-        <form className='mt-5'>
+        <form className='mt-5' onSubmit={handleLogin}>
           <div className='mt-3'>
             <input
               className='p-3 rounded-xl w-full border focus:outline-none focus:border-purple-500'
-              placeholder='Username'
+              placeholder='Email'
               required
               type='text'
+              ref={emailRef}
             />
           </div>
 
@@ -71,16 +75,17 @@ export default function Login() {
               placeholder='Password'
               required
               type='password'
+              ref={passwordRef}
             />
           </div>
 
 
           <div className='flex flex-col items-center mt-5'>
-            <Link to="/home">
-              <button className='bg-black text-white px-6 py-3 rounded-xl hover:bg-black-600 focus:outline-none'>
-                Login
-              </button>
-            </Link>
+            {/* <Link to="/home"> */}
+            <button className='bg-black text-white px-6 py-3 rounded-xl hover:bg-black-600 focus:outline-none'>
+              Login
+            </button>
+            {/* </Link> */}
             <Link to="/register">
               <span className='mt-2 cursor-pointer text-gray-800'>
                 Don't have an account? Sign Up Now
@@ -88,6 +93,9 @@ export default function Login() {
             </Link>
           </div>
         </form>
+        <div id="error">
+
+        </div>
       </div>
     </div>
   );
