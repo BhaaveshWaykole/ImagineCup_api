@@ -11,7 +11,7 @@ const Assets = () => {
   const [avgMonthlyExpenditure, setAvgMonthlyExpenditure] = useState('');
   const [prediction, setPrediction] = useState('');
 
-  const generatePred = () => {
+  const generatePred_ss = () => {
     const requestData = {
       age,
       gender,
@@ -35,25 +35,33 @@ const Assets = () => {
         .catch((error) => {
           console.error('Error generating quote:', error);
         });
-    // const pred=document.getElementById("spendingscore")
-    // console.log(prediction)
-    // pred.innerHTML="Your Spending Score is "+ prediction;
   };
 
-  // const handleModel1 = () => {
-  //   // console.log("clicked")
-  //   const a = document.getElementById("Model1")
-  //   a.innerHTML = "Low spending rate"
-  //   a.style.color = "white"
-  //   a.style.backgroundColor = "green"
-  // }
-  const handleModel2 = () => {
-    // console.log("clicked")
-    const a = document.getElementById("Model2")
-    a.innerHTML = "SilverAI suggests you should go FD"
-    a.style.color = "white"
-    a.style.backgroundColor = "blue"
-  }
+  const generatePred_at = () => {
+    const requestData = {
+      age,
+      marital_status: maritalStatus,
+      profession,
+      monthly_income: monthlyIncome,
+      avg_monthly_expenditure: avgMonthlyExpenditure,
+    };
+
+    fetch('http://127.0.0.1:1000/AssetType', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(requestData),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          setPrediction(data['Asset Type Prediction']);
+        })
+        .catch((error) => {
+          console.error('Error generating quote:', error);
+        });
+  };
+
   return (
     <div className="flex min-h-screen items-center justify-center bg-gradient-to-r from-slate-700 to-zinc-900">
       <Sidebar />
@@ -98,12 +106,12 @@ const Assets = () => {
           </div>
 
           <div className="col-span-full mt-4 flex gap-7">
-            <button type="submit" onClick={generatePred} className="bg-black text-white px-4 py-2 rounded-md hover:bg-blue-600">Spending Score</button>
-            {/* <button type="submit" onClick={handleModel2} className="bg-black text-white px-4 py-2 rounded-md hover:bg-blue-600">Personalized Silver Advice</button> */}
-          </div>
+            <button type="submit" onClick={generatePred_ss} className="bg-black text-white px-4 py-2 rounded-md hover:bg-blue-600">Spending Score</button>
+            <button type="submit" onClick={generatePred_at} className="bg-black text-white px-4 py-2 rounded-md hover:bg-blue-600">Asset Type</button>
+            </div>
 
           {prediction && (
-                <div className='rounded-xl p-3 mt-5'>
+                <div className='rounded-xl p-3 mt-5'> 
                   <h1>Generated Prediction {prediction}</h1>
                 </div>
               )}

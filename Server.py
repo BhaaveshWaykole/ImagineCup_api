@@ -187,6 +187,7 @@ def AssetType():
         else:
             prediction='Stocks'
 
+        print(prediction)
         return jsonify({'Asset Type Prediction': prediction}) 
     
     else:
