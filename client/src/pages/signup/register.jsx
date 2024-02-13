@@ -88,7 +88,7 @@ export default function Register() {
           </Typography>
         </div>
 
-        <form className='mt-5'>
+        <form onSubmit = {registerUser} className='mt-5'>
           <div className='mt-3'>
             <input
               className='p-3 rounded-xl w-full border focus:outline-none focus:border-purple-500'
@@ -129,7 +129,7 @@ export default function Register() {
             <button className='bg-black text-white px-6 py-3 rounded-xl hover:bg-black-600 focus:outline-none'>
               Submit
             </button>
-            <Link to='/login'>
+            <Link to='/'>
               <span className='mt-2 cursor-pointer text-gray-800'>
                 Login to your Existing account?
               </span>
@@ -139,4 +139,4 @@ export default function Register() {
       </div>
     </div>
   );
-};
+}
