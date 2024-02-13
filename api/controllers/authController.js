@@ -10,7 +10,7 @@ export const registerUser = async (req, res) => {
     //     username: "bhaavesh",
     //     email: "bhaavesh@gmail.com",
     //     password: "bhaavesh10"
-    try{
+    try {
         // Hash password - secure with size 10 hash
         const salt = bcrypt.genSaltSync(10);
         const hashedPassword = await bcrypt.hash(req.body.password, salt)
@@ -20,24 +20,25 @@ export const registerUser = async (req, res) => {
             username: req.body.username,
             email: req.body.email,
             password: hashedPassword,
-            occupation : req.body.occupation,
-            gender : req.body.gender,
+            occupation: req.body.occupation,
+            gender: req.body.gender,
             income: req.body.income,
-	        monthExp: req.body.monthExp,
+            monthExp: req.body.monthExp,
         });
         // Save User
         const user = await newUser.save();
         res.status(200).json(user)
-    } catch(err){
+    } catch (err) {
         res.send(err)
     }
 }
 
-export const loginUser = async(req, res) => {
-    try{
-        const loginVar = await UserGen.findOne({email: req.body.email})
+export const loginUser = async (req, res) => {
+    try {
+        const loginVar = await UserGen.findOne({ email: req.body.email })
+        // const loginPass = await UserGen.findOne({ password: req.body.password })
         // !loginVar && res.status(404).send("user not found")
-        if(!loginVar){
+        if (!loginVar) {
             res.status(404).json("user not found")
         }
         const validPass = await bcrypt.compare(req.body.password, loginVar.password)
@@ -45,7 +46,7 @@ export const loginUser = async(req, res) => {
             res.status(404).json("invalid password")
         }
         res.status(200).json(loginVar)
-    }catch(err){
+    } catch (err) {
         res.send(err) // later may change to status 500 and json the error . 
         // choose error handling later .
     }
