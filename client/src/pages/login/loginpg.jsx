@@ -1,6 +1,5 @@
 import {
   Typography,
-  Spinner
 } from "@material-tailwind/react";
 import logoImage from './LOGO-NO BG.png';
 
@@ -88,7 +87,7 @@ export default function Login() {
             {/* </Link> */}
             <Link to="/register">
               <span className='mt-2 cursor-pointer text-gray-800'>
-                Don't have an account? Sign Up Now
+                Dont have an account? Sign Up Now
               </span>
             </Link>
           </div>
@@ -99,4 +98,4 @@ export default function Login() {
       </div>
     </div>
   );
-};
+}

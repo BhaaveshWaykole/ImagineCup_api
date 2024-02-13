@@ -8,10 +8,18 @@ import {
 import './register.css';
 import logoImage from './LOGO-NO BG.png';
 
+import axios from 'axios'
+import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
+
 import { Link } from 'react-router-dom';
 //Register Page of App :- 
 
 export default function Register() {
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const userNameRef = useRef();
+  const navLogin = useNavigate()
   // const navigateTo = useNavigate();
 
   // //Refrences for input fields for register form.
@@ -43,6 +51,23 @@ export default function Register() {
   //         }
   //     }
   // }
+  const registerUser =async(e)=>{
+    e.preventDefault();
+    const username = userNameRef.current.value;
+    const email = emailRef.current.value;
+    const password = passwordRef.current.value;
+    const res = await axios.post("/api/auth/register",{username, email, password})
+    console.log(JSON.stringify(res.data));
+    try{
+      if (res.status) {
+        const goLogin = () => {
+          navLogin('/')
+        }
+        goLogin()
+      }}catch(err){
+        console.log(err)
+      }
+  }
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-slate-700 to-zinc-900">
       <div className='flex items-center text-center'>
@@ -70,6 +95,7 @@ export default function Register() {
               placeholder='Username'
               required
               type='text'
+              ref={userNameRef}
             />
           </div>
           <div className='mt-3'>
@@ -78,6 +104,7 @@ export default function Register() {
               placeholder='Email'
               required
               type='email'
+              ref={emailRef}
             />
           </div>
           <div className='mt-3'>
@@ -86,6 +113,7 @@ export default function Register() {
               placeholder='Password'
               required
               type='password'
+              ref={passwordRef}
             />
           </div>
           <div className='mt-3'>
