@@ -22,9 +22,10 @@ export default function Login() {
     try {
       const res = await axios.post("/api/auth/login", { email, password })
       console.log(JSON.stringify(res.data));
+      console.log(res.data._id)
       if (res.status) {
         const goHome = () => {
-          navHome('/home')
+          navHome(`/home/${res.data._id}`)
         }
         goHome()
       }else {

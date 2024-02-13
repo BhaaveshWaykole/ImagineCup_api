@@ -56,6 +56,7 @@ export default function Register() {
     const username = userNameRef.current.value;
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
+    console.log(username)
     const res = await axios.post("/api/auth/register",{username, email, password})
     console.log(JSON.stringify(res.data));
     try{
