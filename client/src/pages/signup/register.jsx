@@ -60,7 +60,7 @@ export default function Register() {
     console.log(JSON.stringify(res.data));
     try{
       if (res.status) {
-        const goHome = () => {
+        const goLogin = () => {
           navLogin('/')
         }
         goLogin()
