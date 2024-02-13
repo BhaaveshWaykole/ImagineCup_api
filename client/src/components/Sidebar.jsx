@@ -76,6 +76,14 @@ export function Sidebar(userData) {
               <span>Invest</span>
             </ListItem>
           </Link>
+          <Link to="/">
+            <ListItem className="gap-3 mb-2 items-center cursor-pointer">
+              <ListItemPrefix>
+                <InboxStackIcon className="h-5 w-5" />
+              </ListItemPrefix>
+              <span>Logout</span>
+            </ListItem>
+          </Link>
         </div>
       </List>
     </Card>
