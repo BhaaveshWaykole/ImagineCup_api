@@ -8,35 +8,60 @@ import {
 } from "react-router-dom";
 
 import axios from 'axios'
-import { useRef } from "react";
+import { useRef, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../contex/AuthContext";
 
 export default function Login() {
   const emailRef = useRef();
   const passwordRef = useRef();
   const navHome = useNavigate()
+
+  const { dispatch } = useContext(AuthContext)
+  const [error, setError] = useState(null)
+  const [isLoading, setIsLoading] = useState(null)
+  const [userdata, setUser] = useState('');
+
   const handleLogin = async (e) => {
     e.preventDefault();
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
-    try {
-      const res = await axios.post("/api/auth/login", { email, password })
-      console.log(JSON.stringify(res.data));
-      console.log(res.data._id)
-      if (res.status) {
-        const goHome = () => {
-          navHome(`/home/${res.data._id}`)
-        }
-        goHome()
-      }else {
-        const error = document.getElementById("error")
-        error.innerHTML = "Login failed"
-        error.style.color = "white"
-      }
-      // console.log(res.status)
-    } catch (err) {
-      console.log(err)
+    setIsLoading(true)
+    setError(null)
+
+    const res = await axios.post("/api/auth/login", { email, password });
+    if (!res.ok) {
+      console.log(res.data.error); // Use specific error message
     }
+    // console.log(res.data.username)
+    localStorage.setItem("user", JSON.stringify(res.username));
+    dispatch({ type: 'LOGIN', payload: res.data }); // Dispatch login action
+    setIsLoading(false); 
+    // console.log("HERE" + res.data._id)
+    const goHome = () => {
+      navHome(`/home/${res.data._id}`)
+    }
+    goHome()
+
+
+    // try {
+    //   const res = await axios.post("/api/auth/login", { email, password })
+    //   console.log(JSON.stringify(res.data));
+    //   console.log(res.data._id)
+    //   if (res.status) {
+    //     const goHome = () => {
+    //       navHome(`/home/${res.data._id}`)
+    //     }
+    //     goHome()
+    //   } else {
+    //     const error = document.getElementById("error")
+    //     error.innerHTML = "Login failed"
+    //     error.style.color = "white"
+    //   }
+    //   // console.log(res.status)
+    // } catch (err) {
+    //   console.log(err)
+    // }
   }
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-slate-700 to-zinc-900">

@@ -25,7 +25,10 @@ export default function Register() {
   const [error, setError] = useState(null)
   const [isLoading, setIsLoading] = useState(null)
   const { context, dispatch } = useContext(AuthContext)
-
+  
+  const loginPg = () => {
+    navLogin('/')
+  }
   const registerUser = async (e) => {
     setIsLoading(true)
     setError(null)
@@ -39,8 +42,8 @@ export default function Register() {
     if (!res.ok) {
       console.log(res.data.error); // Use specific error message
     }
-    const user = res.data; // Retrieve user data from response
-    localStorage.setItem("username", JSON.stringify(res.username)); // Use "username" key and extracted username
+    // const user = res.data; // Retrieve user data from response
+    localStorage.setItem("user", JSON.stringify(res.username)); // Use "username" key and extracted username
     dispatch({ type: 'LOGIN', payload: res }); // Dispatch login action
     setIsLoading(false); // Set loading state to false
   }
@@ -121,7 +124,7 @@ export default function Register() {
           </div>
 
           <div className='flex flex-col items-center mt-5'>
-            <button className='bg-black text-white px-6 py-3 rounded-xl hover:bg-black-600 focus:outline-none'>
+            <button className='bg-black text-white px-6 py-3 rounded-xl hover:bg-black-600 focus:outline-none' onClick={loginPg}>
               Submit
             </button>
             <Link to='/'>
