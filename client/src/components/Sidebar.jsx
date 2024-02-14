@@ -13,18 +13,22 @@ import {
 import logoImage from './LOGO-NO BG.png';
 import axios from 'axios'
 import { Link } from 'react-router-dom';
-import { useEffect, useState } from "react";
+import { useContext } from "react";
+import { UserContext } from "./contex/AuthContext.jsx"
 
 export function Sidebar(userData) {
-  console.log(userData.id)
+  const { user, updateUser } = useContext(UserContext);
+
+  // console.log(userData.id)
   // const [data, setData] = useState("")
-  // const userdata = async () => {
-  //   const res = await axios.get(`/api/usergen/${userData.id}`)
-  //   // console.log(JSON.stringify(res.data))
-  //   // setData(res.data)
-  // }
-  // userdata()
+  const userdata = async () => {
+    const res = await axios.get(`/api/usergen/${userData.id}`)
+    // console.log(JSON.stringify(res.data))
+    updateUser(res.data)
+  }
+  userdata()
   // console.log(data)
+
   return (
     <Card className="w-1/6 rounded-none shadow-2xl shadow-blue-gray-900/5 h-screen flex flex-col" style={{ backgroundImage: 'linear-gradient(to right, #6B7280, #6B7280)' }}>
       <div className="flex items-center">
