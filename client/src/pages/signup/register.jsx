@@ -9,10 +9,11 @@ import './register.css';
 import logoImage from './LOGO-NO BG.png';
 
 import axios from 'axios'
-import { useRef } from "react";
+import { useRef, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Link } from 'react-router-dom';
+import { AuthContext } from "../../contex/AuthContext";
 //Register Page of App :- 
 
 export default function Register() {
@@ -20,55 +21,48 @@ export default function Register() {
   const passwordRef = useRef();
   const userNameRef = useRef();
   const navLogin = useNavigate()
-  // const navigateTo = useNavigate();
 
-  // //Refrences for input fields for register form.
-  // const emailRef = useRef();
-  // const userNameRef = useRef();
-  // const passwordRef = useRef();
-  // const passwordAgainRef = useRef();
-  // const { user, isFetching, error, dispatch } = useContext(AuthContext)
+  const [error, setError] = useState(null)
+  const [isLoading, setIsLoading] = useState(null)
+  const { context, dispatch } = useContext(AuthContext)
 
-  // const handleClick = async (e) => {
-  //     e.preventDefault();
-  //     if (passwordAgainRef.current.value !== passwordRef.current.value) {
-  //         // setCustomValidity -> to set or display popup to tht field saying specifid text
-  //         passwordRef.current.setCustomValidity('Passwords don\'t match')
-  //         // console.log('Passwords dont match')
-  //     } else { // i.e user is not registered :- create user and add them to backend.
-  //         const user = {
-  //             username: userNameRef.current.value,
-  //             email: emailRef.current.value,
-  //             password: passwordRef.current.value
-  //         }
-  //         try {
-  //             await axios.post('/api/auth/register', user)
-  //             // console.log(JSON.stringify(user))
-  //             navigateTo('/login')
-  //         } catch (err) {
-  //             console.log(JSON.stringify(err))
-  //             // console.log("I")
-  //         }
-  //     }
-  // }
-  const registerUser =async(e)=>{
+  const registerUser = async (e) => {
+    setIsLoading(true)
+    setError(null)
+
     e.preventDefault();
     const username = userNameRef.current.value;
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
-    console.log(username)
-    const res = await axios.post("/api/auth/register",{username, email, password})
-    console.log(JSON.stringify(res.data));
-    try{
-      if (res.status) {
-        const goLogin = () => {
-          navLogin('/')
-        }
-        goLogin()
-      }}catch(err){
-        console.log(err)
-      }
+    const res = await axios.post("/api/auth/register", { username, email, password });
+
+    if (!res.ok) {
+      console.log(res.data.error); // Use specific error message
+    }
+    const user = res.data; // Retrieve user data from response
+    localStorage.setItem("username", JSON.stringify(res.username)); // Use "username" key and extracted username
+    dispatch({ type: 'LOGIN', payload: res }); // Dispatch login action
+    setIsLoading(false); // Set loading state to false
   }
+  // const registerUser = async (e) => {
+  //   e.preventDefault();
+  //   const username = userNameRef.current.value;
+  //   const email = emailRef.current.value;
+  //   const password = passwordRef.current.value;
+  //   console.log(username)
+  //   const res = await axios.post("/api/auth/register", { username, email, password })
+  //   console.log(JSON.stringify(res.data));
+  //   try {
+  //     if (res.status) {
+  //       const goLogin = () => {
+  //         navLogin('/')
+  //       }
+  //       goLogin()
+  //     }
+  //   } catch (err) {
+  //     console.log(err)
+  //   }
+  // }
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-slate-700 to-zinc-900">
       <div className='flex items-center text-center'>
@@ -89,7 +83,7 @@ export default function Register() {
           </Typography>
         </div>
 
-        <form onSubmit = {registerUser} className='mt-5'>
+        <form onSubmit={registerUser} className='mt-5'>
           <div className='mt-3'>
             <input
               className='p-3 rounded-xl w-full border focus:outline-none focus:border-purple-500'

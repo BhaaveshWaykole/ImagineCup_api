@@ -14,19 +14,19 @@ import logoImage from './LOGO-NO BG.png';
 import axios from 'axios'
 import { Link } from 'react-router-dom';
 import { useContext } from "react";
-import { UserContext } from "./contex/AuthContext.jsx"
+import { AuthContext } from ".././contex/AuthContext.jsx"
 
 export function Sidebar(userData) {
-  const { user, updateUser } = useContext(UserContext);
+  // const { user, updateUser } = useContext(UserContext);
 
   // console.log(userData.id)
   // const [data, setData] = useState("")
-  const userdata = async () => {
-    const res = await axios.get(`/api/usergen/${userData.id}`)
-    // console.log(JSON.stringify(res.data))
-    updateUser(res.data)
-  }
-  userdata()
+  // const userdata = async () => {
+  //   const res = await axios.get(`/api/usergen/${userData.id}`)
+  //   // console.log(JSON.stringify(res.data))
+  //   updateUser(res.data)
+  // }
+  // userdata()
   // console.log(data)
 
   return (
