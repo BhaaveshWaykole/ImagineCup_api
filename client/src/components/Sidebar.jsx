@@ -13,22 +13,22 @@ import {
 import logoImage from './LOGO-NO BG.png';
 import axios from 'axios'
 import { Link } from 'react-router-dom';
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from ".././contex/AuthContext.jsx"
 
-export function Sidebar(userData) {
-  // const { user, updateUser } = useContext(UserContext);
-
-  // console.log(userData.id)
-  // const [data, setData] = useState("")
-  // const userdata = async () => {
-  //   const res = await axios.get(`/api/usergen/${userData.id}`)
-  //   // console.log(JSON.stringify(res.data))
-  //   updateUser(res.data)
-  // }
-  // userdata()
-  // console.log(data)
-
+export function Sidebar() {
+  const user = useContext(AuthContext)
+  // console.log(user.user._id)
+  const [userName, setUserName] = useState('')
+  const fetchUser = async () => {
+    const name = await axios.get(`/api/usergen/${user.user._id}`)
+    // console.log(name)
+    setUserName(name.data)
+  }
+  useEffect(() => {
+    fetchUser()
+  }, [])
+  console.log(userName.username)
   return (
     <Card className="w-1/6 rounded-none shadow-2xl shadow-blue-gray-900/5 h-screen flex flex-col" style={{ backgroundImage: 'linear-gradient(to right, #6B7280, #6B7280)' }}>
       <div className="flex items-center">
@@ -51,7 +51,7 @@ export function Sidebar(userData) {
       </div>
       <Typography className="py-2 px-2 text-center mb-10">
         <div>
-          <span className="font-bold text-white">{}</span>
+          <span className="font-bold text-white">{ userName.username }</span>
         </div>
       </Typography>
       <List>

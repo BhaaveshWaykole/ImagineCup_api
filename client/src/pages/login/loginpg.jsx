@@ -36,14 +36,12 @@ export default function Login() {
     // console.log(res.data.username)
     localStorage.setItem("user", JSON.stringify(res.username));
     dispatch({ type: 'LOGIN', payload: res.data }); // Dispatch login action
-    setIsLoading(false); 
+    setIsLoading(false);
     // console.log("HERE" + res.data._id)
     const goHome = () => {
       navHome(`/home/${res.data._id}`)
     }
     goHome()
-
-
     // try {
     //   const res = await axios.post("/api/auth/login", { email, password })
     //   console.log(JSON.stringify(res.data));
