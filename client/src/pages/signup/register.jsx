@@ -24,12 +24,13 @@ export default function Register() {
 
   const [error, setError] = useState(null)
   const [isLoading, setIsLoading] = useState(null)
-  const { context, dispatch } = useContext(AuthContext)
-  
+  const { user, dispatch } = useContext(AuthContext)
+
   const loginPg = () => {
     navLogin('/')
   }
   const registerUser = async (e) => {
+    console.log("in")
     setIsLoading(true)
     setError(null)
 
@@ -124,7 +125,7 @@ export default function Register() {
           </div>
 
           <div className='flex flex-col items-center mt-5'>
-            <button className='bg-black text-white px-6 py-3 rounded-xl hover:bg-black-600 focus:outline-none' onClick={loginPg}>
+            <button type="button" className='bg-black text-white px-6 py-3 rounded-xl hover:bg-black-600 focus:outline-none' onClick={registerUser}>
               Submit
             </button>
             <Link to='/'>

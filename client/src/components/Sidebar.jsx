@@ -28,7 +28,8 @@ export function Sidebar(userData) {
   // }
   // userdata()
   // console.log(data)
-
+  const { user } = useContext(AuthContext);
+  // console.log(user.username)
   return (
     <Card className="w-1/6 rounded-none shadow-2xl shadow-blue-gray-900/5 h-screen flex flex-col" style={{ backgroundImage: 'linear-gradient(to right, #6B7280, #6B7280)' }}>
       <div className="flex items-center">
@@ -51,7 +52,7 @@ export function Sidebar(userData) {
       </div>
       <Typography className="py-2 px-2 text-center mb-10">
         <div>
-          <span className="font-bold text-white">{}</span>
+          <span className="font-bold text-white">{user.username}</span>
         </div>
       </Typography>
       <List>

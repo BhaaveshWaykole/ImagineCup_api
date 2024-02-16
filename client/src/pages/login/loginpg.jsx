@@ -16,11 +16,11 @@ export default function Login() {
   const emailRef = useRef();
   const passwordRef = useRef();
   const navHome = useNavigate()
+  const { user } = useContext(AuthContext);
 
   const { dispatch } = useContext(AuthContext)
   const [error, setError] = useState(null)
   const [isLoading, setIsLoading] = useState(null)
-  const [userdata, setUser] = useState('');
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -30,38 +30,19 @@ export default function Login() {
     setError(null)
 
     const res = await axios.post("/api/auth/login", { email, password });
+    // console.log(res.data)
     if (!res.ok) {
       console.log(res.data.error); // Use specific error message
     }
     // console.log(res.data.username)
     localStorage.setItem("user", JSON.stringify(res.username));
     dispatch({ type: 'LOGIN', payload: res.data }); // Dispatch login action
-    setIsLoading(false); 
+    setIsLoading(false);
     // console.log("HERE" + res.data._id)
     const goHome = () => {
       navHome(`/home/${res.data._id}`)
     }
     goHome()
-
-
-    // try {
-    //   const res = await axios.post("/api/auth/login", { email, password })
-    //   console.log(JSON.stringify(res.data));
-    //   console.log(res.data._id)
-    //   if (res.status) {
-    //     const goHome = () => {
-    //       navHome(`/home/${res.data._id}`)
-    //     }
-    //     goHome()
-    //   } else {
-    //     const error = document.getElementById("error")
-    //     error.innerHTML = "Login failed"
-    //     error.style.color = "white"
-    //   }
-    //   // console.log(res.status)
-    // } catch (err) {
-    //   console.log(err)
-    // }
   }
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-slate-700 to-zinc-900">
@@ -107,7 +88,7 @@ export default function Login() {
 
           <div className='flex flex-col items-center mt-5'>
             {/* <Link to="/home"> */}
-            <button className='bg-black text-white px-6 py-3 rounded-xl hover:bg-black-600 focus:outline-none'>
+            <button className='bg-black text-white px-6 py-3 rounded-xl hover:bg-black-600 focus:outline-none' onClick={handleLogin}>
               Login
             </button>
             {/* </Link> */}
